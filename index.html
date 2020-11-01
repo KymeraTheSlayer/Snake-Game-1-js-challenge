@@ -6,8 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Score: <span id="score">0</span></h2>
-    <canvas id="canvas" class="canvas"></canvas>
+    <div class="startPage">
+        <h1>Snake Game!</h1>
+        <button class="button" onclick="startGame()"><span id="startButton"></span></button>
+    </div>
+    <div class="game">
+        <h2>Score: <span id="score">0</span></h2>
+        <canvas id="canvas" class="canvas"></canvas>
+    </div>
 </body>
 <script src="snakeScripts.js"></script>
 <style>
@@ -16,12 +22,56 @@
         background-color: transparent;
     }
 
-    h2{
+    h2, h3, h4 ,h5{
         color: white;
+        font-family: 'Lato', sans-serif; 
+    }
+
+    h1{ 
+        background: -webkit-linear-gradient(#e66465, #9198e5);
+        -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+        font-family: 'Lato', sans-serif; 
+        font-size: 54px;
+        font-weight: 300;
+        line-height: 58px;
+        margin: 0 0 58px; 
     }
 
     body{
         background: black;
+    }
+
+    .startPage{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        background-color: black;
+    }
+
+    .button {
+        color: #fff !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #ed3330;
+        padding: 20px;
+        border-radius: 5px;
+        display: inline-block;
+        border: none;
+        transition: all 0.4s ease 0s;
+    }  
+
+    .button:hover {
+        background: #434343;
+        letter-spacing: 1px;
+        -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+        transition: all 0.4s ease 0s;
     }
 </style>
 </html>

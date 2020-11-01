@@ -15,44 +15,37 @@ const gameCenter = { x: Math.round((canvas.width / 2) / multiplier) * multiplier
 
 let appleExists = false;
 let appleCoords = { x: null, y: null };
-let snake = [{
-    x: gameCenter.x,
-    y: gameCenter.y
-},
-{
-    x: gameCenter.x + multiplier,
-    y: gameCenter.y
-},
-{
-    x: gameCenter.x + multiplier * 2,
-    y: gameCenter.y
-},
-{
-    x: gameCenter.x + multiplier * 3,
-    y: gameCenter.y
-},
-{
-    x: gameCenter.x + multiplier * 4,
-    y: gameCenter.y
-}]; // {x, y}
 
+let snake = []; // {x, y}
 let movementDirection = { x: -1, y: 0 };
 let newMovementDirection = false;
 
 let score = 0;
 const scoreText = document.querySelector('#score');
+const startPageDiv = document.querySelector('.startPage');
+const gameDiv = document.querySelector('.game');
+const startBtn = startPageDiv.querySelector('#startButton');
+startBtn.textContent = 'Start game';
 const eatApplePoints = 100;
 
+var gameRunning;
+function startGame(){
+    snake = [{ x: gameCenter.x, y: gameCenter.y},{ x: gameCenter.x + multiplier, y: gameCenter.y},{ x: gameCenter.x + multiplier * 2, y: gameCenter.y},{ x: gameCenter.x + multiplier * 3, y: gameCenter.y},{ x: gameCenter.x + multiplier * 4, y: gameCenter.y}]; // {x, y}
+    movementDirection = { x: -1, y: 0 };
+    gameRunning = setInterval(gameLoop, gameSpeed);
+    startPageDiv.style.display = 'none';
+    score = 0;
+    scoreText.innerText = score
+}
+
 //listeners
+window.addEventListener('keydown', handleKeyPress);
 
-var gameRunning = setInterval(gameLoop, gameSpeed);
-
-window.addEventListener('keypress', handleKeyPress);
 function handleKeyPress(e) {
     if (newMovementDirection) {
         return;
     }
-    if (e.keyCode === 97) {//A
+    if (e.keyCode === 65 || e.keyCode === 37) {//A
         if (movementDirection.x !== -1) {
             newMovementDirection = true;
         }
@@ -61,7 +54,7 @@ function handleKeyPress(e) {
         }
 
     }
-    else if (e.keyCode === 115) {//S
+    else if (e.keyCode === 83 || e.keyCode === 40) {//S
         if (movementDirection.y !== 1) {
             newMovementDirection = true;
         }
@@ -69,7 +62,7 @@ function handleKeyPress(e) {
             movementDirection = { x: 0, y: 1 };
         }
     }
-    else if (e.keyCode === 100) {//D
+    else if (e.keyCode === 68 || e.keyCode === 39) {//D
         if (movementDirection.x !== 1) {
             newMovementDirection = true;
         }
@@ -77,7 +70,7 @@ function handleKeyPress(e) {
             movementDirection = { x: 1, y: 0 };
         }
     }
-    else if (e.keyCode === 119) {//W
+    else if (e.keyCode === 87 || e.keyCode === 38) {//W
         if (movementDirection.y !== -1) {
             newMovementDirection = true;
         }
@@ -174,4 +167,6 @@ function handleSnakeColision() {
 function gameOver(){
     clearInterval(gameRunning);
     scoreText.innerText = score + ", Game Over";
+    startPageDiv.style.display = 'flex';
+    startBtn.textContent = 'Restart game';
 }
