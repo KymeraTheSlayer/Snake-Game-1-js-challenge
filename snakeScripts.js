@@ -1,6 +1,6 @@
 //Snake Game    ~~~~~~~>    o      o   o o o   o      o
 
-const gameSize = 20; //tamanho das bolas
+const gameSize = 20; //tamanho
 const multiplier = gameSize / 2;
 const gameSpeed = 50;
 
@@ -23,9 +23,9 @@ let newMovementDirection = false;
 let score = 0;
 const scoreText = document.querySelector('#score');
 const startPageDiv = document.querySelector('.startPage');
-const gameDiv = document.querySelector('.game');
 const startBtn = startPageDiv.querySelector('#startButton');
 startBtn.textContent = 'Start game';
+const gameDiv = document.querySelector('.game');
 const eatApplePoints = 100;
 
 var gameRunning;
@@ -35,7 +35,7 @@ function startGame(){
     gameRunning = setInterval(gameLoop, gameSpeed);
     startPageDiv.style.display = 'none';
     score = 0;
-    scoreText.innerText = score
+    scoreText.innerText = score;
 }
 
 //listeners
