@@ -1,8 +1,8 @@
 //Snake Game    ~~~~~~~>    o      o   o o o   o      o
 
-const gameSize = 20; //tamanho
-const multiplier = gameSize / 2;
-const gameSpeed = 50;
+let gameSize =  100//tamanho
+let multiplier = gameSize / 2;
+let gameSpeed = 50;
 
 let canvas;
 let context;
@@ -27,6 +27,8 @@ const startBtn = startPageDiv.querySelector('#startButton');
 startBtn.textContent = 'Start game';
 const gameDiv = document.querySelector('.game');
 const eatApplePoints = 100;
+const inputSize = document.querySelector('#gameSize');
+const inputSpeed = document.querySelector('#gameSpeed');
 
 var gameRunning;
 function startGame(){
@@ -36,6 +38,13 @@ function startGame(){
     startPageDiv.style.display = 'none';
     score = 0;
     scoreText.innerText = score;
+
+    gameSize =  inputSize.value;//tamanho
+    multiplier = gameSize / 2;
+    gameSpeed = inputSpeed.value;
+
+    console.log(gameSize);
+    console.log(gameSpeed);
 }
 
 //listeners

@@ -11,6 +11,14 @@
         <button class="button" onclick="startGame()">
             <span id="startButton"></span>
         </button>
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" name="name" id="gameSpeed" value="20" required />
+            <label for="gameSpeed" class="form__label">Game Speed: </label>
+        </div>
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" name="name" id="gameSize" value="50" required />
+            <label for="gameSize" class="form__label">Game Size: </label>
+        </div>
     </div>
     <div class="game">
         <h2>Score: <span id="score">0</span></h2>
@@ -24,13 +32,13 @@
         background-color: transparent;
     }
 
-    h2, h3, h4 ,h5{
+    h2, h3, h4 ,h5, label{
         color: white;
         font-family: 'Lato', sans-serif; 
     }
 
     h1{ 
-        background: -webkit-linear-gradient(#e66465, #9198e5);
+        background: -webkit-linear-gradient(#ed3330, #ffffff);
         -webkit-background-clip: text;
          -webkit-text-fill-color: transparent;
         font-family: 'Lato', sans-serif; 
@@ -74,6 +82,68 @@
         -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
         box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
         transition: all 0.4s ease 0s;
+    }
+
+    .form__group {
+        position: relative;
+        padding: 15px 0 0;
+        margin-top: 10px;
+        width: 50%;
+    }
+
+    .form__field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid #9b9b9b;
+        outline: 0;
+        font-size: 1.3rem;
+        color: #fff;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+    }
+
+    .form__field::placeholder {
+        color: transparent;
+    }
+
+    .form__field:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+
+    .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: #9b9b9b;
+    }
+
+    .form__field:focus {
+        padding-bottom: 6px;
+        font-weight: 700;
+        border-width: 3px;
+        border-image: linear-gradient(to right, #ed3330, #ffffff);
+        border-image-slice: 1;
+    }
+    
+    .form__field:focus ~ .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: #ed3330;
+        font-weight: 700;
+    }
+    /* reset input */
+
+    .form__field:required, .form__field:invalid {
+        box-shadow: none;
     }
 </style>
 </html>
